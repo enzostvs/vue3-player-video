@@ -170,8 +170,8 @@ export default /*#__PURE__*/defineComponent({
         </div>
         <div class="ml-3 flex items-center justify-end" @mouseleave="volume = false">
           <div class="relative">
-            <div :class="`w-128 transform origin-left translate-x-2 -rotate-90 w-128 transition duration-200 absolute transform top-0 py-2 ${volume ? '-translate-y-4' : 'opacity-0 -translate-y-1'}`">
-              <div class="px-3 py-2 rounded-lg bg-black bg-opacity-80 flex items-center transform translate-x-2">
+            <div :class="`w-128 transform origin-left translate-x-2 -rotate-90 w-128 transition duration-200 absolute transform top-0 py-2 ${volume ? '-translate-y-4' : 'opacity-0 -translate-y-1 pointer-events-none'}`">
+              <div class="px-3 py-2 rounded-lg flex items-center transform translate-x-2" style="background-color: rgba(0, 0, 0, .8)">
                 <input v-model="amount" type="range" step="0.05" min="0" max="1" class="rounded-lg overflow-hidden appearance-none bg-white bg-opacity-30 h-1 w-128 vertical-range" @input="setVolume">
               </div>
             </div>
