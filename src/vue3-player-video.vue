@@ -100,6 +100,10 @@ export default /*#__PURE__*/defineComponent({
     setVolume () {
       this.player.volume = this.amount
     },
+    stopVolume () {
+      if (this.amount > 0) return this.amount = 0
+      return this.amount = 1
+    },
     fullScreen () {
       this.player.webkitEnterFullscreen()
     },
@@ -171,7 +175,7 @@ export default /*#__PURE__*/defineComponent({
                 <input v-model="amount" type="range" step="0.05" min="0" max="1" class="rounded-lg overflow-hidden appearance-none bg-white bg-opacity-30 h-1 w-128 vertical-range" @input="setVolume">
               </div>
             </div>
-            <img :src="`https://en-zo.dev/vue-videoplayer/volume-${Math.ceil(amount * 2)}.svg`" alt="High volume video" class="w-6 cursor-pointer relative" style="z-index: 2" @click="amount > 0 ? amount = 0 : amount = 1" @mouseenter="volume = true">
+            <img :src="`https://en-zo.dev/vue-videoplayer/volume-${Math.ceil(amount * 2)}.svg`" alt="High volume video" class="w-6 cursor-pointer relative" style="z-index: 2" @click="stopVolume" @mouseenter="volume = true">
           </div>
           <img src="https://en-zo.dev/vue-videoplayer/maximize.svg" alt="Fullscreen" class="w-4 ml-3 cursor-pointer" @click="fullScreen">
         </div>
