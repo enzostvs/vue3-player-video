@@ -2,6 +2,7 @@
 ____
 
 ![VueJS](https://img.shields.io/badge/vuejs-%2335495e.svg?&style=for-the-badge&logo=vue.js&logoColor=%234FC08D)  ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?&style=for-the-badge&logo=tailwind-css&logoColor=white)
+
 [![NPM](https://nodei.co/npm/vue3-player-video.png)](https://nodei.co/npm/vue3-player-video/)
 
 A modern, visual video player for Vue3.
