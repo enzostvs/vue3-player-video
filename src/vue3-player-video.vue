@@ -145,8 +145,7 @@ export default /*#__PURE__*/defineComponent({
       >
         <source :src="src" type="video/mp4">
       </video>
-      <!-- ${hovered ? 'opacity-100' : 'opacity-0 translate-y-full'} -->
-      <div v-if="controls" :class="`transition duration-300 transform absolute w-full bottom-0 left-0  flex items-center justify-between overlay px-5  pt-3 pb-5`">
+      <div v-if="controls" :class="`transition duration-300 transform absolute w-full bottom-0 left-0 ${hovered ? 'opacity-100' : 'opacity-0 translate-y-full'} flex items-center justify-between overlay px-5  pt-3 pb-5`">
         <div class="flex items-center justify-start w-full">
           <p class="text-white text-xs mr-3 w-24">
             {{ time.display }}/{{ duration }}
@@ -189,26 +188,7 @@ export default /*#__PURE__*/defineComponent({
   </div>
 </template>
 
-<style scoped>
-.overlay {
-  background: linear-gradient(0deg, #0000006b, transparent)
-}
-.vertical-range::-webkit-slider-thumb {
-  width: 6px;
-  -webkit-appearance: none;
-  appearance: none;
-  height: 6px;
-  background-color: white;
-  cursor: ns-resize;
-  box-shadow: -405px 0 0 400px rgba(255, 255, 255, .6);
-  border-radius: 50%;
-}
-.backdrop-filter {
-  backdrop-filter: blur(15px);
-}
-.gradient-variable {
-  --tw-gradient-from: #fbbf24;
-  --tw-gradient-to: #ec4899;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(251, 191, 36, 0))
-}
+<style>
+@import './tailwind.css';
+
 </style>

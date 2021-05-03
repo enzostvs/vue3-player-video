@@ -1,6 +1,6 @@
 {
   "name": "vue3-player-video",
-  "version": "1.0.6",
+  "version": "1.0.16",
   "description": "A vue 3 component to display our video in custom video player (customizable with multi themes)",
   "keywords": [
     "playervideo",
@@ -27,10 +27,7 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
   "dependencies": {
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2",
-    "postcss": "^7.0.35",
-    "postcss-loader": "^4.1.0",
-    "autoprefixer": "^9.8.6"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -45,11 +42,18 @@
     "@vue/compiler-sfc": "^3.0.5",
     "cross-env": "^7.0.3",
     "minimist": "^1.2.5",
-    "postcss": "^8.2.3",
     "rollup": "^2.36.1",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-vue": "^6.0.0",
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "autoprefixer": "^9.6.1",
+    "browserslist": "^4.6.6",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^4.1.2",
+    "postcss": "^7.0.35",
+    "postcss-loader": "^4.1.0",
+    "postcss-preset-env": "^6.7.0",
     "vue": "^3.0.5"
   },
   "peerDependencies": {
