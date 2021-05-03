@@ -11,8 +11,8 @@ It will bring your videos to life with a customizable and powerful player!
 If you have a problem, don't hesitate to create an issue :)
 
 ### Exemple
-- Live demo 🎉
-- Code demo 🎈
+- [Live demo 🎉](https://en-zo.dev/vue3-player-video) (coming soon !)
+- Code demo 🎈 (coming soon !)
 
 ### Install
 ```js
