@@ -41,11 +41,13 @@ export default {
 ____
 
 ## Props
-| Name   |      Type      |  Default |
-|----------|:-------------:|------:|
-| src |  string | required | 
-| autoplay |    boolean   |   false |
-| loop | boolean |   false |
-| controls | boolean |   true |
-| mask | boolean |   true |
-| progressColors | String, Array |   ['#fbbf24', '#ec4899'] |
+| Name   |      Type      |  Default | Description |
+|----------|:-------------:|------:|------:|
+| src |  string | required |  Source file |
+| autoplay |    boolean   |   false |  Video played when component is load |
+| loop | boolean |   false | Play the video again |
+| controls | boolean |   true | Display controls |
+| mask | boolean |   true | Display the mask on first load |
+| hoverable | boolean |   true | Display the controls at the hover |
+| colors | String, Array |   ['#fbbf24', '#ec4899'] | Change colors components |
+| theme | String |   basic | You can change theme of component: basic, gradient |
