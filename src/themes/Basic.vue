@@ -14,7 +14,11 @@
       >
         <source :src="src" type="video/mp4">
       </video>
-      <div v-if="controls" class="absolute px-5 pb-5 bottom-0 left-0 w-full transition duration-300 transform">
+      <div
+        v-if="controls"
+        :class="{ 'opacity-0 translate-y-full': !hoverable && hovered, 'opacity-0 translate-y-full': hoverable && !hovered }"
+        class="absolute px-5 pb-5 bottom-0 left-0 w-full transition duration-300 transform"
+      >
         <div class="w-full bg-black bg-opacity-30 px-5 py-4 rounded-xl flex items-center justify-between" @mouseleave="volume = false">
           <div class="font-sans py-1 px-2 text-white rounded-md text-xs mr-5 whitespace-nowrap font-medium w-32 text-center" :style="`font-size: 11px; background-color: ${color}`">
             {{ time.display }}&nbsp;/&nbsp;{{ duration }}
@@ -62,19 +66,23 @@ export default /*#__PURE__*/defineComponent({
     },
     autoplay: {
       type: Boolean,
-      default: false
+      required: true
     },
     loop: {
       type: Boolean,
-      default: false
+      required: true
     },
     controls: {
       type: Boolean,
-      default: true
+      required: true
+    },
+    hoverable: {
+      type: Boolean,
+      required: true
     },
     mask: {
       type: Boolean,
-      default: true
+      required: true
     },
     colors: {
       type: [String, Array],

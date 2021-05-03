@@ -33,6 +33,10 @@ export default /*#__PURE__*/defineComponent({
         return ['#8B5CF6', '#ec4899']
       }
     },
+    hoverable: {
+      type: Boolean,
+      default: false
+    },
     theme: {
       type: String,
       default: 'basic'
@@ -126,6 +130,7 @@ export default /*#__PURE__*/defineComponent({
       :time="time"
       :playing="playing"
       :duration="duration"
+      :hoverable="hoverable"
       @play="play"
       @stop="stop"
       @timeupdate="({ currentTime }) => time.current = currentTime"
