@@ -1,25 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.overlay {
-  background: linear-gradient(0deg, #0000006b, transparent)
-}
-.vertical-range::-webkit-slider-thumb {
-  width: 6px;
-  -webkit-appearance: none;
-  appearance: none;
-  height: 6px;
-  background-color: white;
-  cursor: ns-resize;
-  box-shadow: -405px 0 0 400px rgba(255, 255, 255, .6);
-  border-radius: 50%;
-}
-.backdrop-filter {
-  backdrop-filter: blur(15px);
-}
-.gradient-variable {
-  --tw-gradient-from: #fbbf24;
-  --tw-gradient-to: #ec4899;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(251, 191, 36, 0))
-}

@@ -50,12 +50,11 @@ const baseConfig = {
       commonjs(),
       postcss({
         config: {
-            path: './postcss.config.js',
+          path: './postcss.config.js',
         },
         extensions: ['.css'],
-        extract: true,
-        minimize: true,
-        // modules: true,
+        extract: false,
+        minimize: true
       }),
     ],
     babel: {

@@ -130,65 +130,88 @@ export default /*#__PURE__*/defineComponent({
 </script>
 
 <template>
-  <div class="shadow-xl rounded-xl overflow-hidden relative" @mouseenter="hovered = true" @mouseleave="hovered = false" @keydown.left="play">
-    <div class="relative">
-      <video
-        :ref="uuid"
-        class="w-full"
-        :loop="loop"
-        :autoplay="autoplay"
-        :muted="autoplay"
-        @timeupdate="time.current = $event.target.currentTime"
-        @pause="isPlaying(false)"
-        @play="isPlaying(true)"
-        @click="play"
-      >
-        <source :src="src" type="video/mp4">
-      </video>
-      <div v-if="controls" :class="`transition duration-300 transform absolute w-full bottom-0 left-0 ${hovered ? 'opacity-100' : 'opacity-0 translate-y-full'} flex items-center justify-between overlay px-5  pt-3 pb-5`">
-        <div class="flex items-center justify-start w-full">
-          <p class="text-white text-xs mr-3 w-24">
-            {{ time.display }}/{{ duration }}
-          </p>
-          <div class="mr-3">
-            <img v-show="playing" src="https://en-zo.dev/vue-videoplayer/pause.svg" alt="Icon pause video" class="w-4 cursor-pointer" @click="play">
-            <img v-show="!playing" src="https://en-zo.dev/vue-videoplayer/play.svg" alt="Icon play video" class="w-4 cursor-pointer" @click="play">
-          </div>
-          <div class="w-full h-1 bg-white bg-opacity-60 rounded-sm cursor-pointer" @click="e => position(e)">
-            <div class="relative h-full pointer-events-none" :style="`width: ${time.progress}%; transition: width .2s ease-in-out;`">
-              <div
-                class="w-full rounded-sm h-full gradient-variable bg-gradient-to-r pointer-events-none absolute top-0 left-0"
-                :style="`--tw-gradient-from: ${colorFrom};--tw-gradient-to: ${colorTo};transition: width .2s ease-in-out`"
-              />
-              <div
-                class="w-full rounded-sm filter blur-sm h-full gradient-variable bg-gradient-to-r pointer-events-none absolute top-0 left-0"
-                :style="`--tw-gradient-from: ${colorFrom};--tw-gradient-to: ${colorTo};transition: width .2s ease-in-out`"
-              />
+  <div class="vue3-player-video">
+    <div class="shadow-xl rounded-xl overflow-hidden relative" @mouseenter="hovered = true" @mouseleave="hovered = false" @keydown.left="play">
+      <div class="relative">
+        <video
+          :ref="uuid"
+          class="w-full"
+          :loop="loop"
+          :autoplay="autoplay"
+          :muted="autoplay"
+          @timeupdate="time.current = $event.target.currentTime"
+          @pause="isPlaying(false)"
+          @play="isPlaying(true)"
+          @click="play"
+        >
+          <source :src="src" type="video/mp4">
+        </video>
+        <div v-if="controls" :class="`transition duration-300 transform absolute w-full bottom-0 left-0 ${hovered ? 'opacity-100' : 'opacity-0 translate-y-full'} flex items-center justify-between overlay px-5  pt-3 pb-5`">
+          <div class="flex items-center justify-start w-full">
+            <p class="text-white text-xs mr-3 w-24">
+              {{ time.display }}/{{ duration }}
+            </p>
+            <div class="mr-3">
+              <img v-show="playing" src="https://en-zo.dev/vue-videoplayer/pause.svg" alt="Icon pause video" class="w-4 cursor-pointer" @click="play">
+              <img v-show="!playing" src="https://en-zo.dev/vue-videoplayer/play.svg" alt="Icon play video" class="w-4 cursor-pointer" @click="play">
             </div>
-          </div>
-        </div>
-        <div class="ml-3 flex items-center justify-end" @mouseleave="volume = false">
-          <div class="relative">
-            <div :class="`w-128 transform origin-left translate-x-2 -rotate-90 w-128 transition duration-200 absolute transform top-0 py-2 ${volume ? '-translate-y-4' : 'opacity-0 -translate-y-1 pointer-events-none'}`">
-              <div class="px-3 py-2 rounded-lg flex items-center transform translate-x-2" style="background-color: rgba(0, 0, 0, .8)">
-                <input v-model="amount" type="range" step="0.05" min="0" max="1" class="rounded-lg overflow-hidden appearance-none bg-white bg-opacity-30 h-1 w-128 vertical-range" @input="setVolume">
+            <div class="w-full h-1 bg-white bg-opacity-60 rounded-sm cursor-pointer" @click="e => position(e)">
+              <div class="relative h-full pointer-events-none" :style="`width: ${time.progress}%; transition: width .2s ease-in-out;`">
+                <div
+                  class="w-full rounded-sm h-full gradient-variable bg-gradient-to-r pointer-events-none absolute top-0 left-0"
+                  :style="`--tw-gradient-from: ${colorFrom};--tw-gradient-to: ${colorTo};transition: width .2s ease-in-out`"
+                />
+                <div
+                  class="w-full rounded-sm filter blur-sm h-full gradient-variable bg-gradient-to-r pointer-events-none absolute top-0 left-0"
+                  :style="`--tw-gradient-from: ${colorFrom};--tw-gradient-to: ${colorTo};transition: width .2s ease-in-out`"
+                />
               </div>
             </div>
-            <img :src="`https://en-zo.dev/vue-videoplayer/volume-${Math.ceil(amount * 2)}.svg`" alt="High volume video" class="w-6 cursor-pointer relative" style="z-index: 2" @click="stopVolume" @mouseenter="volume = true">
           </div>
-          <img src="https://en-zo.dev/vue-videoplayer/maximize.svg" alt="Fullscreen" class="w-4 ml-3 cursor-pointer" @click="fullScreen">
+          <div class="ml-3 flex items-center justify-end" @mouseleave="volume = false">
+            <div class="relative">
+              <div :class="`w-128 origin-left translate-x-2 -rotate-90 w-128 transition duration-200 absolute transform top-0 py-2 ${volume ? '-translate-y-4' : 'opacity-0 -translate-y-1 pointer-events-none'}`">
+                <div class="px-3 py-2 rounded-lg flex items-center transform translate-x-2" style="background-color: rgba(0, 0, 0, .8)">
+                  <input v-model="amount" type="range" step="0.05" min="0" max="1" class="rounded-lg overflow-hidden appearance-none bg-white bg-opacity-30 h-1 w-128 vertical-range" @input="setVolume">
+                </div>
+              </div>
+              <img :src="`https://en-zo.dev/vue-videoplayer/volume-${Math.ceil(amount * 2)}.svg`" alt="High volume video" class="w-6 cursor-pointer relative" style="z-index: 2" @click="stopVolume" @mouseenter="volume = true">
+            </div>
+            <img src="https://en-zo.dev/vue-videoplayer/maximize.svg" alt="Fullscreen" class="w-4 ml-3 cursor-pointer" @click="fullScreen">
+          </div>
         </div>
-      </div>
-      <div v-if="!autoplay && mask && time.current === 0" :class="`transition transform duration-300 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-filter z-10 flex items-center justify-center ${playing ? 'opacity-0 pointer-events-none' : ''}`">
-        <div class="w-20 h-20 rounded-full bg-white bg-opacity-20 transition duration-200 hover:bg-opacity-40 flex items-center justify-center cursor-pointer">
-          <img src="https://en-zo.dev/vue-videoplayer/play.svg" alt="Icon play video" class="transform translate-x-1 w-8" @click="play">
+        <div v-if="!autoplay && mask && time.current === 0" :class="`transition transform duration-300 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-filter z-10 flex items-center justify-center ${playing ? 'opacity-0 pointer-events-none' : ''}`">
+          <div class="w-20 h-20 rounded-full bg-white bg-opacity-20 transition duration-200 hover:bg-opacity-40 flex items-center justify-center cursor-pointer">
+            <img src="https://en-zo.dev/vue-videoplayer/play.svg" alt="Icon play video" class="transform translate-x-1 w-8" @click="play">
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 @import './tailwind.css';
+.overlay {
+  background: linear-gradient(0deg, #0000006b, transparent)
+}
+.vertical-range::-webkit-slider-thumb {
+  width: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background-color: white;
+  cursor: ns-resize;
+  box-shadow: -405px 0 0 400px rgba(255, 255, 255, .6);
+  border-radius: 50%;
+}
+.backdrop-filter {
+  backdrop-filter: blur(15px);
+}
+.gradient-variable {
+  --tw-gradient-from: #fbbf24;
+  --tw-gradient-to: #ec4899;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(251, 191, 36, 0))
+}
 
 </style>
