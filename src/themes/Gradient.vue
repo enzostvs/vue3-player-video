@@ -23,7 +23,7 @@
           <p class="font-sans text-white text-xs w-24">
             {{ time.display }}/{{ duration }}
           </p>
-          <div class="mr-3">
+          <div class="mr-3 ml-2">
             <img v-show="playing" src="https://en-zo.dev/vue-videoplayer/pause.svg" alt="Icon pause video" class="w-5 cursor-pointer" @click="$emit('play')">
             <img v-show="!playing" src="https://en-zo.dev/vue-videoplayer/play.svg" alt="Icon play video" class="w-5 cursor-pointer" @click="$emit('play')">
           </div>
