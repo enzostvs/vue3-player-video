@@ -12,7 +12,7 @@ If you have a problem, don't hesitate to create an issue :)
 
 ### Exemple
 - [Live demo 🎉](https://en-zo.dev/vue3-player-video) (coming soon !)
-- Code demo 🎈 (coming soon !)
+- [Code demo 🎈](https://github.com/enzostvs/vue3-player-video/tree/main/examples) (coming soon !)
 
 ### Install
 ```js
