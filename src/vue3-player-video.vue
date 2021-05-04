@@ -146,7 +146,7 @@ export default /*#__PURE__*/defineComponent({
 </template>
 
 <style>
-@import './tailwind.css';
+@import './assets/tailwind.css';
 .overlay {
   background: linear-gradient(0deg, #0000006b, transparent)
 }
