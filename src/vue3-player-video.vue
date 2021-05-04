@@ -135,8 +135,6 @@ export default /*#__PURE__*/defineComponent({
       @stop="stop"
       @timeupdate="({ currentTime }) => time.current = currentTime"
       @position="position"
-      @setVolume="setVolume"
-      @stopVolume="stopVolume"
       @fullScreen="fullScreen"
       @setPlayer="setPlayer"
       @isPlaying="isPlaying"

@@ -121,7 +121,6 @@ export default /*#__PURE__*/defineComponent({
   },
   computed: {
     colorFrom () {
-      console.log(this.colors)
       if (typeof this.colors === 'string') {
         return this.colors ? this.colors : '#fbbf24'
       }
